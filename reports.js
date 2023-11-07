@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch((error) => {
       console.log('An error, in deed, occurred.', error);
-
-      //   alert('Error submitting report');
+      alert('Error fetching reports');
     });
 });
