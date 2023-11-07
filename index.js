@@ -4,7 +4,7 @@ const HEADERS = { 'Content-Type': 'application/json' };
 const submitReport = (event) => {
   event.preventDefault();
 
-  const reportForm = document.getElementById('reportForm');
+  const reportForm = document.getElementById('report-form');
   const description = document.getElementById('description-input').value;
   const submitReportBtn = document.getElementById('submit-report-button');
   const spinner = document.getElementById('submit-button-spinner');
@@ -46,6 +46,6 @@ const submitReport = (event) => {
 document.addEventListener('DOMContentLoaded', function () {
   modal.init();
 
-  const reportForm = document.getElementById('reportForm');
+  const reportForm = document.getElementById('report-form');
   reportForm.addEventListener('submit', submitReport);
 });
