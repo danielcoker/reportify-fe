@@ -5,6 +5,8 @@ const submitReport = (event) => {
   event.preventDefault();
 
   const reportForm = document.getElementById('report-form');
+  const name = document.getElementById('name-input').value;
+  const phone = document.getElementById('phone-input').value;
   const description = document.getElementById('description-input').value;
   const submitReportBtn = document.getElementById('submit-report-button');
   const spinner = document.getElementById('submit-button-spinner');
@@ -16,7 +18,7 @@ const submitReport = (event) => {
   submitText.classList.add('hidden');
 
   const url = BASE_URL + '/reports';
-  const payload = { description };
+  const payload = { name, phone, description };
 
   axios
     .post(url, payload, HEADERS)
@@ -35,11 +37,7 @@ const submitReport = (event) => {
       spinner.classList.replace('inline', 'hidden');
       submitText.classList.remove('hidden');
 
-      // Pending deployment for the backend APIs, simulate success on error.
-      reportForm.reset();
-      modal.openModal('report-submitted-modal');
-
-      //   alert('Error submitting report');
+      alert('Error submitting report');
     });
 };
 
