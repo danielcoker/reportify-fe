@@ -1,4 +1,4 @@
-const BASE_URL = 'https://reportify-pqlb.onrender.com/api/v1';
+const BASE_URL = 'https://reportify-b3xwl.ondigitalocean.app/api/v1';
 const HEADERS = { 'Content-Type': 'application/json' };
 
 document.addEventListener('DOMContentLoaded', function () {
