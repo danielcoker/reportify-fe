@@ -9,14 +9,18 @@ const getLocationSuccessCallback = (position) => {
 };
 
 const getLocationErrorCallback = (error) => {
-  console.log("Could not fetch user's location");
+  console.error('Error getting location:', error.message);
 };
 
 window.addEventListener('load', () => {
-  navigator.geolocation.getCurrentPosition(
-    getLocationSuccessCallback,
-    getLocationErrorCallback
-  );
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      getLocationSuccessCallback,
+      getLocationErrorCallback
+    );
+  } else {
+    console.error('Geolocation not available');
+  }
 });
 
 const submitReport = (event) => {
