@@ -64,7 +64,7 @@ const submitReport = (event) => {
       spinner.classList.replace('inline', 'hidden');
       submitText.classList.remove('hidden');
 
-      alert('Error submitting report');
+      alert('Error submitting report', error.message);
     });
 };
 
