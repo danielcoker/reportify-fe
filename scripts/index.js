@@ -1,6 +1,28 @@
 const BASE_URL = 'https://reportify-b3xwl.ondigitalocean.app/api/v1';
 const HEADERS = { 'Content-Type': 'application/json' };
 
+let coords = {};
+
+const getLocationSuccessCallback = (position) => {
+  coords['longitude'] = position.coords.longitude;
+  coords['latitude'] = position.coords.latitude;
+};
+
+const getLocationErrorCallback = (error) => {
+  console.error('Error getting location:', error.message);
+};
+
+window.addEventListener('load', () => {
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      getLocationSuccessCallback,
+      getLocationErrorCallback
+    );
+  } else {
+    console.error('Geolocation not available');
+  }
+});
+
 const submitReport = (event) => {
   event.preventDefault();
 
@@ -19,6 +41,11 @@ const submitReport = (event) => {
 
   const url = BASE_URL + '/reports';
   const payload = { name, phone, description };
+
+  if (coords) {
+    payload['longitude'] = coords['longitude'];
+    payload['latitude'] = coords['latitude'];
+  }
 
   axios
     .post(url, payload, HEADERS)
