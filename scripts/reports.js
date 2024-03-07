@@ -36,14 +36,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const description = document.createElement('td');
         description.classList.add(...tdDescriptionClassList);
 
-        const location = document.createElement('td');
-        location.classList.add(...tdClassList, 'capitalize');
-
         const category = document.createElement('td');
         category.classList.add(...tdClassList);
 
         const createdAt = document.createElement('td');
         createdAt.classList.add(...tdClassList);
+
+        const location = document.createElement('td');
+        location.classList.add(...tdClassList, 'capitalize');
 
         // Format date.
         const dateObj = new Date(report.created_at);
@@ -60,15 +60,15 @@ document.addEventListener('DOMContentLoaded', function () {
         // Set TD values.
         id.textContent = idx + 1;
         description.textContent = report.description;
-        location.textContent = report.location;
         category.textContent = report.category.name;
         createdAt.textContent = formattedDate;
+        location.textContent = report.location;
 
         row.appendChild(id);
         row.appendChild(description);
-        row.appendChild(location);
         row.appendChild(category);
         row.appendChild(createdAt);
+        row.appendChild(location);
 
         reportTableBody.appendChild(row);
       });
